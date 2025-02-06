@@ -5381,9 +5381,9 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 455 "./mcc_generated_files/pin_manager.h"
+# 516 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 467 "./mcc_generated_files/pin_manager.h"
+# 528 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -5670,27 +5670,23 @@ typedef struct
 # 95 "./mcc_generated_files/adc.h"
 typedef enum
 {
-    AN3 = 0x8,
-    AN4 = 0x9,
-    AN2 = 0xA,
-    AN1 = 0xC,
     channel_Temp = 0x1D,
     channel_DAC = 0x1E,
     channel_FVR = 0x1F
 } adc_channel_t;
-# 139 "./mcc_generated_files/adc.h"
+# 135 "./mcc_generated_files/adc.h"
 void ADC_Initialize(void);
-# 169 "./mcc_generated_files/adc.h"
+# 165 "./mcc_generated_files/adc.h"
 void ADC_SelectChannel(adc_channel_t channel);
-# 196 "./mcc_generated_files/adc.h"
+# 192 "./mcc_generated_files/adc.h"
 void ADC_StartConversion(void);
-# 228 "./mcc_generated_files/adc.h"
+# 224 "./mcc_generated_files/adc.h"
 _Bool ADC_IsConversionDone(void);
-# 261 "./mcc_generated_files/adc.h"
+# 257 "./mcc_generated_files/adc.h"
 adc_result_t ADC_GetConversionResult(void);
-# 291 "./mcc_generated_files/adc.h"
+# 287 "./mcc_generated_files/adc.h"
 adc_result_t ADC_GetConversion(adc_channel_t channel);
-# 319 "./mcc_generated_files/adc.h"
+# 315 "./mcc_generated_files/adc.h"
 void ADC_TemperatureAcquisitionDelay(void);
 # 58 "./mcc_generated_files/mcc.h" 2
 
@@ -5756,7 +5752,9 @@ void OSCILLATOR_Initialize(void);
 void WDT_Initialize(void);
 # 44 "main.c" 2
 
-
+# 1 "./commande.h" 1
+void reset();
+# 45 "main.c" 2
 
 
 
@@ -5774,8 +5772,141 @@ void main(void) {
 
 
     (INTCONbits.PEIE = 1);
-# 72 "main.c"
+
+
+
+
+
+
+
+    char reception;
+
+
     while (1) {
+
+        if (eusartRxCount != 0) {
+
+            reception = EUSART_Read();
+
+            switch (reception)
+            {
+
+                case '0':
+                {
+                    reset();
+                    do { LATAbits.LATA0 = 1; } while(0);
+                    printf("->GR:x:OFF");
+                    break;
+                }
+
+                case '1':
+                {
+                    reset();
+                    do { LATAbits.LATA0 = 1; } while(0);
+                    printf("->GR:1:ON");
+                    break;
+                }
+
+                case '2':
+                {
+                    reset();
+                    do { LATAbits.LATA1 = 1; } while(0);
+                    printf("->GR:2:ON");
+                    break;
+                }
+
+                case '3':
+                {
+                    reset();
+                    do { LATAbits.LATA2 = 1; } while(0);
+                    printf("->GR:3:ON");
+                    break;
+                }
+
+                case '4':
+                {
+                    reset();
+                    do { LATAbits.LATA3 = 1; } while(0);
+                    printf("->GR:4:ON");
+                    break;
+                }
+
+                case '5':
+                {
+                    reset();
+                    do { LATAbits.LATA4 = 1; } while(0);
+                    printf("->GR:5:ON");
+                    break;
+                }
+
+                case '6':
+                {
+                    reset();
+                    do { LATAbits.LATA5 = 1; } while(0);
+                    printf("->GR:6:ON");
+                    break;
+                }
+
+                case '7':
+                {
+                    reset();
+                    do { LATAbits.LATA6 = 1; } while(0);
+                    printf("->GR:7:ON");
+                    break;
+                }
+
+                case '8':
+                {
+                    reset();
+                    do { LATAbits.LATA7 = 1; } while(0);
+                    printf("->GR:8:ON");
+                    break;
+                }
+
+                case '9':
+                {
+                    reset();
+                    do { LATAbits.LATA3 = 1; } while(0);
+                    printf("->GR:9:ON");
+                    break;
+                }
+
+                case 'A':
+                {
+                    reset();
+                    do { LATBbits.LATB1 = 1; } while(0);
+                    printf("->GR:10:ON");
+                    break;
+                }
+
+                case 'B':
+                {
+                    reset();
+                    do { LATBbits.LATB2 = 1; } while(0);
+                    printf("->GR:11:ON");
+                    break;
+                }
+
+                case 'C':
+                {
+                    reset();
+                    do { LATBbits.LATB3 = 1; } while(0);
+                    printf("->GR:12:ON");
+                    break;
+                }
+
+                case 'Z':
+                {
+                    __asm("reset");
+                    break;
+                }
+
+            }
+
+        }
+
+
+
 
 
     }

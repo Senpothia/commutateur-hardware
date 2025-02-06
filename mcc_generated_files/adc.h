@@ -94,10 +94,6 @@ typedef struct
 
 typedef enum
 {
-    AN3 =  0x8,
-    AN4 =  0x9,
-    AN2 =  0xA,
-    AN1 =  0xC,
     channel_Temp =  0x1D,
     channel_DAC =  0x1E,
     channel_FVR =  0x1F

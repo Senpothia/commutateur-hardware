@@ -42,8 +42,7 @@
  */
 
 #include "mcc_generated_files/mcc.h"
-//#include "config.h"
-
+#include "commande.h"
 
 /*
                          Main application
@@ -67,14 +66,139 @@ void main(void) {
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
 
+    char reception;
 
-   
+
     while (1) {
 
+        if (eusartRxCount != 0) {
 
-    } 
+            reception = EUSART_Read(); // read a byte for RX
 
-} 
+            switch (reception) // check command  
+            {
+
+                case '0':
+                {
+                    reset();
+                    GR01_SetHigh();
+                    printf("->GR:x:OFF");
+                    break;
+                }
+
+                case '1':
+                {
+                    reset();
+                    GR01_SetHigh();
+                    printf("->GR:1:ON");
+                    break;
+                }
+
+                case '2':
+                {
+                    reset();
+                    GR02_SetHigh();
+                    printf("->GR:2:ON");
+                    break;
+                }
+
+                case '3':
+                {
+                    reset();
+                    GR03_SetHigh();
+                    printf("->GR:3:ON");
+                    break;
+                }
+
+                case '4':
+                {
+                    reset();
+                    GR04_SetHigh();
+                    printf("->GR:4:ON");
+                    break;
+                }
+
+                case '5':
+                {
+                    reset();
+                    GR05_SetHigh();
+                    printf("->GR:5:ON");
+                    break;
+                }
+
+                case '6':
+                {
+                    reset();
+                    GR06_SetHigh();
+                    printf("->GR:6:ON");
+                    break;
+                }
+
+                case '7':
+                {
+                    reset();
+                    GR07_SetHigh();
+                    printf("->GR:7:ON");
+                    break;
+                }
+
+                case '8':
+                {
+                    reset();
+                    GR08_SetHigh();
+                    printf("->GR:8:ON");
+                    break;
+                }
+
+                case '9':
+                {
+                    reset();
+                    GR04_SetHigh();
+                    printf("->GR:9:ON");
+                    break;
+                }
+
+                case 'A':
+                {
+                    reset();
+                    GR10_SetHigh();
+                    printf("->GR:10:ON");
+                    break;
+                }
+
+                case 'B':
+                {
+                    reset();
+                    GR11_SetHigh();
+                    printf("->GR:11:ON");
+                    break;
+                }
+
+                case 'C':
+                {
+                    reset();
+                    GR12_SetHigh();
+                    printf("->GR:12:ON");
+                    break;
+                }
+
+                case 'Z':
+                {
+                    RESET();
+                    break;
+                }
+
+            }
+
+        }
+
+
+
+
+
+    }
+
+}
 
 /**
  End of File

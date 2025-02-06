@@ -19,6 +19,39 @@ Version 4.0 HI-TECH Software Intermediate Code
 "375
 [; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h: 375: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
 [v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
+"90 ./mcc_generated_files/eusart.h
+[; ;./mcc_generated_files/eusart.h: 90: extern volatile uint8_t eusartRxCount;
+[v _eusartRxCount `Vuc ~T0 @X0 0 e ]
+"329
+[; ;./mcc_generated_files/eusart.h: 329: uint8_t EUSART_Read(void);
+[v _EUSART_Read `(uc ~T0 @X0 0 ef ]
+"1 ./commande.h
+[; ;./commande.h: 1: void reset();
+[v _reset `(v ~T0 @X0 0 e? ]
+"2364 C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h
+[; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h: 2364:     struct {
+[s S119 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S119 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
+"2363
+[; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h: 2363: typedef union {
+[u S118 `S119 1 ]
+[n S118 . . ]
+"2375
+[; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h: 2375: extern volatile LATAbits_t LATAbits __attribute__((address(0x10C)));
+[v _LATAbits `VS118 ~T0 @X0 0 e@268 ]
+"111 C:\Program Files\Microchip\xc8\v2.32\pic\include\c99\stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+"2426 C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h
+[; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h: 2426:     struct {
+[s S121 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S121 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
+"2425
+[; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h: 2425: typedef union {
+[u S120 `S121 1 ]
+[n S120 . . ]
+"2437
+[; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h: 2437: extern volatile LATBbits_t LATBbits __attribute__((address(0x10D)));
+[v _LATBbits `VS120 ~T0 @X0 0 e@269 ]
 "55 C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h
 [; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -548,32 +581,427 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./mcc_generated_files/i2c_master.h: 213: void (*MSSP_InterruptHandler)(void);
 [v _MSSP_InterruptHandler `*F3348 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"51 main.c
-[; ;main.c: 51: void main(void) {
+"50 main.c
+[; ;main.c: 50: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"53
-[; ;main.c: 53:     SYSTEM_Initialize();
+"52
+[; ;main.c: 52:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
-"59
-[; ;main.c: 59:     (INTCONbits.GIE = 1);
+"58
+[; ;main.c: 58:     (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"62
-[; ;main.c: 62:     (INTCONbits.PEIE = 1);
+"61
+[; ;main.c: 61:     (INTCONbits.PEIE = 1);
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"69
+[; ;main.c: 69:     char reception;
+[v _reception `uc ~T0 @X0 1 a ]
 "72
 [; ;main.c: 72:     while (1) {
 [e :U 386 ]
 {
-"75
-[; ;main.c: 75:     }
+"74
+[; ;main.c: 74:         if (eusartRxCount != 0) {
+[e $ ! != -> _eusartRxCount `i -> 0 `i 388  ]
+{
+"76
+[; ;main.c: 76:             reception = EUSART_Read();
+[e = _reception -> ( _EUSART_Read ..  `uc ]
+"78
+[; ;main.c: 78:             switch (reception)
+[e $U 390  ]
+"79
+[; ;main.c: 79:             {
+{
+"81
+[; ;main.c: 81:                 case '0':
+[e :U 391 ]
+"82
+[; ;main.c: 82:                 {
+{
+"83
+[; ;main.c: 83:                     reset();
+[e ( _reset ..  ]
+"84
+[; ;main.c: 84:                     do { LATAbits.LATA0 = 1; } while(0);
+[e :U 394 ]
+{
+[e = . . _LATAbits 0 0 -> -> 1 `i `uc ]
+}
+[e :U 393 ]
+"85
+[; ;main.c: 85:                     printf("->GR:x:OFF");
+[e ( _printf :s 1C ]
+"86
+[; ;main.c: 86:                     break;
+[e $U 389  ]
+"87
+[; ;main.c: 87:                 }
+}
+"89
+[; ;main.c: 89:                 case '1':
+[e :U 395 ]
+"90
+[; ;main.c: 90:                 {
+{
+"91
+[; ;main.c: 91:                     reset();
+[e ( _reset ..  ]
+"92
+[; ;main.c: 92:                     do { LATAbits.LATA0 = 1; } while(0);
+[e :U 398 ]
+{
+[e = . . _LATAbits 0 0 -> -> 1 `i `uc ]
+}
+[e :U 397 ]
+"93
+[; ;main.c: 93:                     printf("->GR:1:ON");
+[e ( _printf :s 2C ]
+"94
+[; ;main.c: 94:                     break;
+[e $U 389  ]
+"95
+[; ;main.c: 95:                 }
+}
+"97
+[; ;main.c: 97:                 case '2':
+[e :U 399 ]
+"98
+[; ;main.c: 98:                 {
+{
+"99
+[; ;main.c: 99:                     reset();
+[e ( _reset ..  ]
+"100
+[; ;main.c: 100:                     do { LATAbits.LATA1 = 1; } while(0);
+[e :U 402 ]
+{
+[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
+}
+[e :U 401 ]
+"101
+[; ;main.c: 101:                     printf("->GR:2:ON");
+[e ( _printf :s 3C ]
+"102
+[; ;main.c: 102:                     break;
+[e $U 389  ]
+"103
+[; ;main.c: 103:                 }
+}
+"105
+[; ;main.c: 105:                 case '3':
+[e :U 403 ]
+"106
+[; ;main.c: 106:                 {
+{
+"107
+[; ;main.c: 107:                     reset();
+[e ( _reset ..  ]
+"108
+[; ;main.c: 108:                     do { LATAbits.LATA2 = 1; } while(0);
+[e :U 406 ]
+{
+[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
+}
+[e :U 405 ]
+"109
+[; ;main.c: 109:                     printf("->GR:3:ON");
+[e ( _printf :s 4C ]
+"110
+[; ;main.c: 110:                     break;
+[e $U 389  ]
+"111
+[; ;main.c: 111:                 }
+}
+"113
+[; ;main.c: 113:                 case '4':
+[e :U 407 ]
+"114
+[; ;main.c: 114:                 {
+{
+"115
+[; ;main.c: 115:                     reset();
+[e ( _reset ..  ]
+"116
+[; ;main.c: 116:                     do { LATAbits.LATA3 = 1; } while(0);
+[e :U 410 ]
+{
+[e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
+}
+[e :U 409 ]
+"117
+[; ;main.c: 117:                     printf("->GR:4:ON");
+[e ( _printf :s 5C ]
+"118
+[; ;main.c: 118:                     break;
+[e $U 389  ]
+"119
+[; ;main.c: 119:                 }
+}
+"121
+[; ;main.c: 121:                 case '5':
+[e :U 411 ]
+"122
+[; ;main.c: 122:                 {
+{
+"123
+[; ;main.c: 123:                     reset();
+[e ( _reset ..  ]
+"124
+[; ;main.c: 124:                     do { LATAbits.LATA4 = 1; } while(0);
+[e :U 414 ]
+{
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+}
+[e :U 413 ]
+"125
+[; ;main.c: 125:                     printf("->GR:5:ON");
+[e ( _printf :s 6C ]
+"126
+[; ;main.c: 126:                     break;
+[e $U 389  ]
+"127
+[; ;main.c: 127:                 }
+}
+"129
+[; ;main.c: 129:                 case '6':
+[e :U 415 ]
+"130
+[; ;main.c: 130:                 {
+{
+"131
+[; ;main.c: 131:                     reset();
+[e ( _reset ..  ]
+"132
+[; ;main.c: 132:                     do { LATAbits.LATA5 = 1; } while(0);
+[e :U 418 ]
+{
+[e = . . _LATAbits 0 5 -> -> 1 `i `uc ]
+}
+[e :U 417 ]
+"133
+[; ;main.c: 133:                     printf("->GR:6:ON");
+[e ( _printf :s 7C ]
+"134
+[; ;main.c: 134:                     break;
+[e $U 389  ]
+"135
+[; ;main.c: 135:                 }
+}
+"137
+[; ;main.c: 137:                 case '7':
+[e :U 419 ]
+"138
+[; ;main.c: 138:                 {
+{
+"139
+[; ;main.c: 139:                     reset();
+[e ( _reset ..  ]
+"140
+[; ;main.c: 140:                     do { LATAbits.LATA6 = 1; } while(0);
+[e :U 422 ]
+{
+[e = . . _LATAbits 0 6 -> -> 1 `i `uc ]
+}
+[e :U 421 ]
+"141
+[; ;main.c: 141:                     printf("->GR:7:ON");
+[e ( _printf :s 8C ]
+"142
+[; ;main.c: 142:                     break;
+[e $U 389  ]
+"143
+[; ;main.c: 143:                 }
+}
+"145
+[; ;main.c: 145:                 case '8':
+[e :U 423 ]
+"146
+[; ;main.c: 146:                 {
+{
+"147
+[; ;main.c: 147:                     reset();
+[e ( _reset ..  ]
+"148
+[; ;main.c: 148:                     do { LATAbits.LATA7 = 1; } while(0);
+[e :U 426 ]
+{
+[e = . . _LATAbits 0 7 -> -> 1 `i `uc ]
+}
+[e :U 425 ]
+"149
+[; ;main.c: 149:                     printf("->GR:8:ON");
+[e ( _printf :s 9C ]
+"150
+[; ;main.c: 150:                     break;
+[e $U 389  ]
+"151
+[; ;main.c: 151:                 }
+}
+"153
+[; ;main.c: 153:                 case '9':
+[e :U 427 ]
+"154
+[; ;main.c: 154:                 {
+{
+"155
+[; ;main.c: 155:                     reset();
+[e ( _reset ..  ]
+"156
+[; ;main.c: 156:                     do { LATAbits.LATA3 = 1; } while(0);
+[e :U 430 ]
+{
+[e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
+}
+[e :U 429 ]
+"157
+[; ;main.c: 157:                     printf("->GR:9:ON");
+[e ( _printf :s 10C ]
+"158
+[; ;main.c: 158:                     break;
+[e $U 389  ]
+"159
+[; ;main.c: 159:                 }
+}
+"161
+[; ;main.c: 161:                 case 'A':
+[e :U 431 ]
+"162
+[; ;main.c: 162:                 {
+{
+"163
+[; ;main.c: 163:                     reset();
+[e ( _reset ..  ]
+"164
+[; ;main.c: 164:                     do { LATBbits.LATB1 = 1; } while(0);
+[e :U 434 ]
+{
+[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
+}
+[e :U 433 ]
+"165
+[; ;main.c: 165:                     printf("->GR:10:ON");
+[e ( _printf :s 11C ]
+"166
+[; ;main.c: 166:                     break;
+[e $U 389  ]
+"167
+[; ;main.c: 167:                 }
+}
+"169
+[; ;main.c: 169:                 case 'B':
+[e :U 435 ]
+"170
+[; ;main.c: 170:                 {
+{
+"171
+[; ;main.c: 171:                     reset();
+[e ( _reset ..  ]
+"172
+[; ;main.c: 172:                     do { LATBbits.LATB2 = 1; } while(0);
+[e :U 438 ]
+{
+[e = . . _LATBbits 0 2 -> -> 1 `i `uc ]
+}
+[e :U 437 ]
+"173
+[; ;main.c: 173:                     printf("->GR:11:ON");
+[e ( _printf :s 12C ]
+"174
+[; ;main.c: 174:                     break;
+[e $U 389  ]
+"175
+[; ;main.c: 175:                 }
+}
+"177
+[; ;main.c: 177:                 case 'C':
+[e :U 439 ]
+"178
+[; ;main.c: 178:                 {
+{
+"179
+[; ;main.c: 179:                     reset();
+[e ( _reset ..  ]
+"180
+[; ;main.c: 180:                     do { LATBbits.LATB3 = 1; } while(0);
+[e :U 442 ]
+{
+[e = . . _LATBbits 0 3 -> -> 1 `i `uc ]
+}
+[e :U 441 ]
+"181
+[; ;main.c: 181:                     printf("->GR:12:ON");
+[e ( _printf :s 13C ]
+"182
+[; ;main.c: 182:                     break;
+[e $U 389  ]
+"183
+[; ;main.c: 183:                 }
+}
+"185
+[; ;main.c: 185:                 case 'Z':
+[e :U 443 ]
+"186
+[; ;main.c: 186:                 {
+{
+"187
+[; ;main.c: 187:                     __asm("reset");
+[; <" reset ;# ">
+"188
+[; ;main.c: 188:                     break;
+[e $U 389  ]
+"189
+[; ;main.c: 189:                 }
+}
+"191
+[; ;main.c: 191:             }
+}
+[e $U 389  ]
+[e :U 390 ]
+[e [\ -> _reception `i , $ -> -> 48 `ui `i 391
+ , $ -> -> 49 `ui `i 395
+ , $ -> -> 50 `ui `i 399
+ , $ -> -> 51 `ui `i 403
+ , $ -> -> 52 `ui `i 407
+ , $ -> -> 53 `ui `i 411
+ , $ -> -> 54 `ui `i 415
+ , $ -> -> 55 `ui `i 419
+ , $ -> -> 56 `ui `i 423
+ , $ -> -> 57 `ui `i 427
+ , $ -> -> 65 `ui `i 431
+ , $ -> -> 66 `ui `i 435
+ , $ -> -> 67 `ui `i 439
+ , $ -> -> 90 `ui `i 443
+ 389 ]
+[e :U 389 ]
+"193
+[; ;main.c: 193:         }
+}
+[e :U 388 ]
+"199
+[; ;main.c: 199:     }
 }
 [e :U 385 ]
 [e $U 386  ]
 [e :U 387 ]
-"77
-[; ;main.c: 77: }
+"201
+[; ;main.c: 201: }
 [e :UE 384 ]
 }
+[p f _printf 8388608 ]
+[a 10C 45 62 71 82 58 57 58 79 78 0 ]
+[a 9C 45 62 71 82 58 56 58 79 78 0 ]
+[a 8C 45 62 71 82 58 55 58 79 78 0 ]
+[a 7C 45 62 71 82 58 54 58 79 78 0 ]
+[a 6C 45 62 71 82 58 53 58 79 78 0 ]
+[a 5C 45 62 71 82 58 52 58 79 78 0 ]
+[a 4C 45 62 71 82 58 51 58 79 78 0 ]
+[a 3C 45 62 71 82 58 50 58 79 78 0 ]
+[a 13C 45 62 71 82 58 49 50 58 79 78 0 ]
+[a 2C 45 62 71 82 58 49 58 79 78 0 ]
+[a 12C 45 62 71 82 58 49 49 58 79 78 0 ]
+[a 11C 45 62 71 82 58 49 48 58 79 78 0 ]
+[a 1C 45 62 71 82 58 120 58 79 70 70 0 ]
