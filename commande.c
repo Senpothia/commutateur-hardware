@@ -17,6 +17,5 @@ void reset() {
     GR10_SetLow();
     GR11_SetLow();
     GR12_SetLow();
-    __delay_ms(100);
 
 }

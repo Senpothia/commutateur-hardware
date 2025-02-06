@@ -5795,6 +5795,7 @@ void main(void) {
                 {
                     reset();
                     do { LATAbits.LATA0 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:x:OFF");
                     break;
                 }
@@ -5803,6 +5804,7 @@ void main(void) {
                 {
                     reset();
                     do { LATAbits.LATA0 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:1:ON");
                     break;
                 }
@@ -5811,6 +5813,7 @@ void main(void) {
                 {
                     reset();
                     do { LATAbits.LATA1 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:2:ON");
                     break;
                 }
@@ -5819,6 +5822,7 @@ void main(void) {
                 {
                     reset();
                     do { LATAbits.LATA2 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:3:ON");
                     break;
                 }
@@ -5827,6 +5831,7 @@ void main(void) {
                 {
                     reset();
                     do { LATAbits.LATA3 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:4:ON");
                     break;
                 }
@@ -5835,6 +5840,7 @@ void main(void) {
                 {
                     reset();
                     do { LATAbits.LATA4 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:5:ON");
                     break;
                 }
@@ -5843,6 +5849,7 @@ void main(void) {
                 {
                     reset();
                     do { LATAbits.LATA5 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:6:ON");
                     break;
                 }
@@ -5851,6 +5858,7 @@ void main(void) {
                 {
                     reset();
                     do { LATAbits.LATA6 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:7:ON");
                     break;
                 }
@@ -5859,6 +5867,7 @@ void main(void) {
                 {
                     reset();
                     do { LATAbits.LATA7 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:8:ON");
                     break;
                 }
@@ -5867,6 +5876,7 @@ void main(void) {
                 {
                     reset();
                     do { LATAbits.LATA3 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:9:ON");
                     break;
                 }
@@ -5875,6 +5885,7 @@ void main(void) {
                 {
                     reset();
                     do { LATBbits.LATB1 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:10:ON");
                     break;
                 }
@@ -5883,6 +5894,7 @@ void main(void) {
                 {
                     reset();
                     do { LATBbits.LATB2 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:11:ON");
                     break;
                 }
@@ -5891,6 +5903,7 @@ void main(void) {
                 {
                     reset();
                     do { LATBbits.LATB3 = 1; } while(0);
+                    _delay((unsigned long)((100)*(32000000/4000.0)));
                     printf("->GR:12:ON");
                     break;
                 }

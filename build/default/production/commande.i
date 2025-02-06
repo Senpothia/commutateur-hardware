@@ -5769,6 +5769,5 @@ void reset() {
     do { LATBbits.LATB1 = 0; } while(0);
     do { LATBbits.LATB2 = 0; } while(0);
     do { LATBbits.LATB3 = 0; } while(0);
-    _delay((unsigned long)((100)*(32000000/4000.0)));
 
 }

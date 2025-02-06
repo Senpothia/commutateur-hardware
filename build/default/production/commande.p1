@@ -22,10 +22,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2437
 [; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h: 2437: extern volatile LATBbits_t LATBbits __attribute__((address(0x10D)));
 [v _LATBbits `VS120 ~T0 @X0 0 e@269 ]
-[v F183 `(v ~T0 @X0 1 tf1`ul ]
-"12 C:\Program Files\Microchip\xc8\v2.32\pic\include\builtins.h
-[v __delay `JF183 ~T0 @X0 0 e ]
-[p i __delay ]
 "55 C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h
 [; ;C:\Program Files\Microchip\xc8\v2.32\pic\include\proc\pic16f1939.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -644,10 +640,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
 }
 [e :U 419 ]
-"20
-[; ;commande.c: 20:     _delay((unsigned long)((100)*(32000000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"22
-[; ;commande.c: 22: }
+"21
+[; ;commande.c: 21: }
 [e :UE 384 ]
 }

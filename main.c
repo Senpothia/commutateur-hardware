@@ -82,6 +82,7 @@ void main(void) {
                 {
                     reset();
                     GR01_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:x:OFF");
                     break;
                 }
@@ -90,6 +91,7 @@ void main(void) {
                 {
                     reset();
                     GR01_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:1:ON");
                     break;
                 }
@@ -98,6 +100,7 @@ void main(void) {
                 {
                     reset();
                     GR02_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:2:ON");
                     break;
                 }
@@ -106,6 +109,7 @@ void main(void) {
                 {
                     reset();
                     GR03_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:3:ON");
                     break;
                 }
@@ -114,6 +118,7 @@ void main(void) {
                 {
                     reset();
                     GR04_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:4:ON");
                     break;
                 }
@@ -122,6 +127,7 @@ void main(void) {
                 {
                     reset();
                     GR05_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:5:ON");
                     break;
                 }
@@ -130,6 +136,7 @@ void main(void) {
                 {
                     reset();
                     GR06_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:6:ON");
                     break;
                 }
@@ -138,6 +145,7 @@ void main(void) {
                 {
                     reset();
                     GR07_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:7:ON");
                     break;
                 }
@@ -146,6 +154,7 @@ void main(void) {
                 {
                     reset();
                     GR08_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:8:ON");
                     break;
                 }
@@ -154,6 +163,7 @@ void main(void) {
                 {
                     reset();
                     GR04_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:9:ON");
                     break;
                 }
@@ -162,6 +172,7 @@ void main(void) {
                 {
                     reset();
                     GR10_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:10:ON");
                     break;
                 }
@@ -170,6 +181,7 @@ void main(void) {
                 {
                     reset();
                     GR11_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:11:ON");
                     break;
                 }
@@ -178,6 +190,7 @@ void main(void) {
                 {
                     reset();
                     GR12_SetHigh();
+                    __delay_ms(100);
                     printf("->GR:12:ON");
                     break;
                 }
