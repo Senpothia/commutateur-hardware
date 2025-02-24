@@ -67,6 +67,7 @@ void main(void) {
     //INTERRUPT_PeripheralInterruptDisable();
 
     char reception;
+    char count = '0';
 
 
     while (1) {
@@ -74,140 +75,40 @@ void main(void) {
         if (eusartRxCount != 0) {
 
             reception = EUSART_Read(); // read a byte for RX
-
-            switch (reception) // check command  
-            {
-
-                case '0':
-                {
-                    reset();
-                    GR01_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:x:OFF");
-                    break;
-                }
-
-                case '1':
-                {
-                    reset();
-                    GR01_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:1:ON");
-                    break;
-                }
-
-                case '2':
-                {
-                    reset();
-                    GR02_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:2:ON");
-                    break;
-                }
-
-                case '3':
-                {
-                    reset();
-                    GR03_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:3:ON");
-                    break;
-                }
-
-                case '4':
-                {
-                    reset();
-                    GR04_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:4:ON");
-                    break;
-                }
-
-                case '5':
-                {
-                    reset();
-                    GR05_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:5:ON");
-                    break;
-                }
-
-                case '6':
-                {
-                    reset();
-                    GR06_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:6:ON");
-                    break;
-                }
-
-                case '7':
-                {
-                    reset();
-                    GR07_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:7:ON");
-                    break;
-                }
-
-                case '8':
-                {
-                    reset();
-                    GR08_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:8:ON");
-                    break;
-                }
-
-                case '9':
-                {
-                    reset();
-                    GR04_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:9:ON");
-                    break;
-                }
-
-                case 'A':
-                {
-                    reset();
-                    GR10_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:10:ON");
-                    break;
-                }
-
-                case 'B':
-                {
-                    reset();
-                    GR11_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:11:ON");
-                    break;
-                }
-
-                case 'C':
-                {
-                    reset();
-                    GR12_SetHigh();
-                    __delay_ms(100);
-                    printf("->GR:12:ON");
-                    break;
-                }
-
-                case 'Z':
-                {
-                    RESET();
-                    break;
-                }
-
-            }
+            processActivation(reception);
 
         }
 
+        if (IN1_GetValue() == 0) {
+
+            long tempo = 0;
+
+            while (IN1_GetValue() == 0) {
+
+                tempo++;
+                if (tempo > 100000) {
+                    
+                    count = '0';
+                    reset();
+                    __delay_ms(3000);
+                    return;
+                }
+            }
+
+            count++;
+            if (count < '=') {
+                processActivation(count);
+
+            } else {
+
+                reset();
+                count = '0';
+            }
 
 
 
+
+        }
 
     }
 
